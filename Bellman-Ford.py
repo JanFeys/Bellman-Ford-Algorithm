@@ -46,10 +46,9 @@ class WeightedDirectedGraph():
         while k<self.nr_vs:
             print('k=',k)
             self.A[k][:] = self.A[k-1][:]
-            for v in range(self.nr_vs):
-                for w in range(self.nr_vs):
-                    if v in self.es[w]:
-                        self.A[k][v] = min(self.A[k][v],self.A[k-1][w]+self.ws[(w,v)])
+            for w in range(self.nr_vs):
+                for v in self.es[w]:
+                    self.A[k][v] = min(self.A[k][v],self.A[k-1][w]+self.ws[(w,v)])
             if self.A[k][:] == self.A[k-1][:]:
                 break
             k = k+1
@@ -60,7 +59,7 @@ class WeightedDirectedGraph():
         return self.A[-1][:]
 
 if __name__ == "__main__":
-    file_name =  'BellmanFordsimpletest1.txt'
+    file_name =  'BellmanFordtest1.txt'
 
     start_time = time.time()
 
