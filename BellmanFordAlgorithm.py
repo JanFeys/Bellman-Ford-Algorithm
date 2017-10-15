@@ -42,7 +42,6 @@ class WeightedDirectedGraph():
 
         k = 1
         while k<self.nr_vs:
-            print('k=',k)
             self.A.append(self.A[k-1][:])
             for w in range(self.nr_vs):
                 for v in self.es[w]:
