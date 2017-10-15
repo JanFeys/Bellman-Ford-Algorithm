@@ -53,8 +53,7 @@ class WeightedDirectedGraph():
                 break
             k = k+1
         else:
-            print('negative cycle detected')
-            quit()
+            return None
     
         return self.A[-1][:]
 
@@ -77,8 +76,13 @@ if __name__ == "__main__":
 
     shortest_paths = graph.run_Bellman_Ford(start)
 
-    for v in range(nr_vs):
-        print("from %s to %s shortest path is %s" % (start, v, shortest_paths[v]))
-
     end_time = time.time()
     print(end_time - start_time)
+    
+    if (shortest_paths == None):
+        print('negative cycle detected')
+    else:
+        for v in range(nr_vs):
+            print("from %s to %s shortest path is %s" % (start, v, shortest_paths[v]))
+
+
