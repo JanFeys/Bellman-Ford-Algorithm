@@ -39,13 +39,14 @@ class WeightedDirectedGraph():
         print("there are %s edges in total" % nr_es_present)
 
     def run_Bellman_Ford(self,s):
-        self.A = [[sys.maxsize for t in range(self.nr_vs)] for h in range(self.nr_vs)]
+        self.A = []
+        self.A.append([sys.maxsize for v in range(self.nr_vs)])
         self.A[0][s] = 0
 
         k = 1
         while k<self.nr_vs:
             print('k=',k)
-            self.A[k][:] = self.A[k-1][:]
+            self.A.append(self.A[k-1][:])
             for w in range(self.nr_vs):
                 for v in self.es[w]:
                     self.A[k][v] = min(self.A[k][v],self.A[k-1][w]+self.ws[(w,v)])
@@ -58,7 +59,7 @@ class WeightedDirectedGraph():
         return self.A[-1][:]
 
 if __name__ == "__main__":
-    file_name =  'BellmanFordtest1.txt'
+    file_name =  'BellmanFordsimpletest1.txt'
 
     start_time = time.time()
 
