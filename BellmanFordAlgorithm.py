@@ -7,14 +7,11 @@ import sys
 class WeightedDirectedGraph():
     def __init__(self, nr_vs):
         self.nr_vs = nr_vs #number of vertices
-        self.es = defaultdict(set) #dictionary of sets that, for every vertex, stores tails of edges leaving it
+        self.es = defaultdict(set) #dictionary of sets that, for every vertex, stores head of edges leaving it
         self.ws = dict() #dictionary that stores weight of each edge
 
     def show_nr_vs(self):
         return self.nr_vs
-
-    def show_nr_es(self):
-        return self.nr_es
 
     def add_edge(self, t, h, w):
         (self.es[t]).add(h)
